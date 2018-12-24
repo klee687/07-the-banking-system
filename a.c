@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <iostream>
+#include <fstream>
+#include "a.h"
 //using namespace std;
 using std::cout;
 using std::cin;
@@ -28,6 +30,7 @@ void manager(int id){
 }
 
 void customer(int id){
+	return ;	
 }
 
 void maintenance(int id){
@@ -36,18 +39,23 @@ void maintenance(int id){
 int main(void){
 	int id = 0;
 	int password = 0;
-	cout << "----------- Bank -----------\n";
-	cout << "ID: ";
+	printf ("----------- Bank -----------\n");
+	printf ("------ maintenance ----- [1]\n");
+	printf ("--------- manager ------ [2]\n");
+	printf ("---------customer ------ [3]\n");
+	printf ("Remember, in orer to create a new account, you need to set up an appoinment with a manager. \n");
+	
+	cout << "ID :: ";
 	cin >> id;
 	// if ID -> manager's iD, then switch to manager's function
 	// if ID -> clients, then go to client
 	// if ID -> maintenance, then go to maintenance 
 
 
-	if (id == 001){
+	if (id == 1){
 		maintenance(id);
 	}
-	else if (id == 101){
+	else if (id == 2){
 		manager(id);
 	}
 	else{
