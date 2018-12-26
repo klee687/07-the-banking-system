@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
-#include "a.h"
+#include <string>
+
+#include "a.hpp"
 
 
 
 void manager(int id){
-	int min, an;
+	int min, an, customerID;
 	std::cout << "What would you like to proceed?\n";
 	std::cout << "1. Open a new account for a customer\n";
 	std::cout << "2. Close an account for a customer \n";
@@ -19,7 +21,13 @@ void manager(int id){
 			std::cout << "1. New Account for a new customer\n2. New Account for a current customer\n>>  ";
 			std::cin >> an;
 			if (an == 1){
-			
+				std::ofstream outFile;
+				outFile.open("text.txt");
+				std::cout << "customer ID: ";
+				std::cin >> customerID;
+				//if (customerID != 
+				outFile << customerID << std::endl;
+				outFile.close();
 			}
 		}
 	}else{
@@ -29,7 +37,7 @@ void manager(int id){
 }
 
 void customer(int id){
-	
+		
 }
 
 void maintenance(int id){
@@ -37,8 +45,6 @@ void maintenance(int id){
 
 int main(void){
 
-	std::ofstream tmpfile;
-	tmpfile.open ("text.txt");
 	int id = 0;
 	int password = 0;
 	printf ("----------- Bank -----------\n");
