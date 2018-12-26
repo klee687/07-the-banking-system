@@ -3,9 +3,16 @@
 #include <fstream>
 #include <string>
 
-#include "bank.hpp"
+#include "Bank.hpp"
 
 
+Bank::Bank(){}
+
+
+
+//Most of what you have here should probably be in the "Main.cpp" file. THis file should do all the processing
+
+/**
 
 void manager(int id){
 	int min, an, customerID;
@@ -70,3 +77,6 @@ int main(void){
 		customer(id);
 	}	
 }// main
+
+
+**/
