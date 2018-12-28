@@ -1,12 +1,7 @@
 #include "Customer.hpp"
-
-
-
 Customer::Customer(std::string name, std::string ID) : name(name), ID(ID){
 
-
 	/**
-		
 		You're probably wondering what i'm doing with " :name(name), ID(id) {}
 
 		This is the exact same thing as doing 
@@ -17,8 +12,6 @@ Customer::Customer(std::string name, std::string ID) : name(name), ID(ID){
 		However, the way I've done is much cleaner and it is the C++ way to do it. It's called "member initializer lists" 		
 
 	**/
-	
-
 }
 
 
