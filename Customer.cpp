@@ -18,8 +18,7 @@ Customer::Customer(std::string name, std::string ID) : name(name), ID(ID){
 
 //Customer also has a print_summary function that was in the Customer.hpp, so we shall add that here too
 void Customer::print_summary(){
-
-	//add functionality
+	
 }
 
 

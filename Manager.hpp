@@ -1,8 +1,6 @@
 #ifndef MANAGER_H_
 #define MANAGER_H_
-
 #include "Account.hpp"
-
 
 class Manager {
 
@@ -12,22 +10,13 @@ class Manager {
 
 	//These are all private by default. 
 	std::string ID;
-	
-
-	
-
-	public:
-		
+	public:		
 		//Declare constructor
 		Manager(std::string ID);
 		
 		//I don;t remember the details, but I think it's the manager that's alllowed to add accounts?
 
 		void add_account(Account account);
-		
-		
-
-
 };
 
 
