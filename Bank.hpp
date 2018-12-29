@@ -22,6 +22,12 @@ void maintenance(int id);
 // This is basically your biggest class. You'll probably have data structures for Account, Customer, and Manager and whatever else. Think about it like a real world Bank.
 
 
+//Need libraries 
+#include <stdio.h>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
 
 class Bank{
 

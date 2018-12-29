@@ -1,10 +1,23 @@
+//#include <iostream>
+//#include "Maintenance.hpp"
+//#include "Manager.hpp"
+//#include "Customer.hpp"
 #include <iostream>
-#include "Maintenance.hpp"
-#include "Manager.hpp"
-#include "Customer.hpp"
-
+#include <fstream>
 
 int main(){
+
+
+	std::ifstream file;
+	std::string file_name = "text.txt";
+	std::string token;
+
+	file.open(file_name.c_str());
+
+	while(file >> token){
+	
+		//std::cout<<token<<std::endl;
+	}
 
 //Most of what you have here should probably be in the "Main.cpp" file. THis file should do all the processing
 
