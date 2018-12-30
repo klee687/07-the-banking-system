@@ -17,19 +17,19 @@ That prevents double declaration of any identifiers such as types, enums and sta
 
 
 class Account{
-	std::string name;
+	std::string ID;
 	std::string chequing;
 	std::string saving;
 	std::string date;
 
 public:
-	Account(std::string name, std::string chequing, std::string saving, std::string date);
-	std::string getName();
+	Account(std::string ID, std::string chequing, std::string saving, std::string date);
+	std::string getID();
 	std::string getChequing();
 	std::string getSaving();
 	std::string getDate();
 	
-	void setName(std::string name);
+	void setID(std::string ID);
 	void setChequing(std::string chequing);
 	void setSaving(std::string saving);
 	void setDate(std::string date);

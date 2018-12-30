@@ -1,10 +1,10 @@
 #include "Account.hpp"
 
 //Account has a constructor
-Account::Account(std::string name, std::string chequing, std::string saving, std::string date) : name(name), chequing(chequing), saving(saving), date(date) {}
+Account::Account(std::string ID, std::string chequing, std::string saving, std::string date) : ID(ID), chequing(chequing), saving(saving), date(date) {}
 
-std::string Account::getName(){
-	return this->name;
+std::string Account::getID(){
+	return this->ID;
 }
 
 std::string Account::getChequing(){
@@ -22,8 +22,8 @@ std::string Account::getDate(){
 
 
 
-void Account::setName(std::string name){
-	this->name = name;
+void Account::setID(std::string ID){
+	this->ID = ID;
 }
 
 void Account::setChequing(std::string chequing){

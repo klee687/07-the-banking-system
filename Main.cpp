@@ -4,6 +4,14 @@
 //#include "Customer.hpp"
 #include <iostream>
 #include <fstream>
+#include <vector>
+
+void print(std::vector <std::string> const &a){
+	std::cout << "The elements are:: \n";
+	for (int i = 0; i <a.size(); i++)
+		std:: cout << a.at(i) << ' ' <<std::endl;
+}
+
 
 int main(){
 
@@ -11,13 +19,49 @@ int main(){
 	std::ifstream file;
 	std::string file_name = "text.txt";
 	std::string token;
+	std::vector<std::string> info;
 
 	file.open(file_name.c_str());
 
 	while(file >> token){
-	
-		//std::cout<<token<<std::endl;
+		std::cout<<token<<std::endl;
+		info.push_back(token);
 	}
+	print(info);
+
+
+/**
+void print(std::vector <std::string> const &a){
+	std::cout << "The elements are:: ";
+	for (int i = 0; i <a.size(); i++)
+		std:: cout << a.at(i) << ' ' <<std::endl;
+}
+
+
+int main(){
+
+
+	std::ifstream file;
+	std::string file_name = "text.txt";
+	std::string token;
+	std::vector<std::string> info;
+	std::vector<std::string> name;
+	std::vector<std::string> chequing;
+	std::vector<std::string> saving;
+	std::vector<std::string> date;	
+
+	file.open(file_name.c_str());
+
+	while(file >> token){
+		std::cout<<token<<std::endl;
+		name.push_back(token);
+		chequing.push_back(token);
+		saving.push_back(token);
+		date.push_back(token);
+	}
+	return new Account(name, chequing, saving, date);
+	print(info);
+**/
 
 //Most of what you have here should probably be in the "Main.cpp" file. THis file should do all the processing
 

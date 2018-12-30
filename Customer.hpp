@@ -30,9 +30,6 @@ public:
 	void print_summary();
 
 	double get_balance(); //add/remove/change as you wish
-
-
-
 };
 
 
