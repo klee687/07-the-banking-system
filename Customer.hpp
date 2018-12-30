@@ -5,7 +5,7 @@
 #include <vector>
 #include "Account.hpp"
 
-
+class Account; // Need this. Please read about cyclic redundancies
 class Customer{
 
 
@@ -20,7 +20,7 @@ class Customer{
 
 
 public:
-
+	Customer(); //need it 
 	Customer(std::string name, std::string ID);
 	
 	//Everything the customer is able to do should be here. So thing of when you go to an ATM and the stuff you are abkle to do.
@@ -28,8 +28,15 @@ public:
 	//you can probably check your account summary
 
 	void print_summary();
+	
+	void set_ID(std::string ID);
+	void set_name(std::string name);
+	double get_balance(); //add/remove/change as you wish  ***UPDATE ***  this might be unnecessary
 
-	double get_balance(); //add/remove/change as you wish
+
+	//we want a method that adds to our std::vector<Account> accounuts; array
+	//Tip: for the parameters, u dont *need* the variable name. that;s why i have just Account. But this only works in method declarations. U *must* have it in your method *definitions* in your cpp file, jsut like i have done in Customer.cpp
+	void add_account(Account);
 };
 
 

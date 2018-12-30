@@ -1,4 +1,6 @@
 #include "Customer.hpp"
+
+Customer::Customer(){}
 Customer::Customer(std::string name, std::string ID) : name(name), ID(ID){
 
 	/**
@@ -28,4 +30,18 @@ void Customer::print_summary(){
 double Customer::get_balance(){
 
 	//do as u wish
+}
+
+void Customer::add_account(Account account){
+
+	this->accounts.push_back(account);
+}
+
+void Customer::set_name(std::string name){
+	this->name = name;
+}
+
+void Customer::set_ID(std::string ID){
+
+	this->ID = ID;
 }
