@@ -1,7 +1,7 @@
 #include "Customer.hpp"
 
 Customer::Customer(){}
-Customer::Customer(std::string name, std::string ID) : name(name), ID(ID){
+Customer::Customer(std::string name, std::string ID, std::string password) : name(name), ID(ID), password(password){
 
 	/**
 		You're probably wondering what i'm doing with " :name(name), ID(id) {}
@@ -41,7 +41,10 @@ void Customer::set_name(std::string name){
 	this->name = name;
 }
 
-void Customer::set_ID(std::string ID){
+void Customer::set_password(std::string password){
+	this->password = password;
+}
 
+void Customer::set_ID(std::string ID){
 	this->ID = ID;
 }

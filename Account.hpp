@@ -27,24 +27,20 @@ class Account{
 	
 	Customer * customer;
 	std::string account_name;
-	std::string password;
-	int ID;	
-	std::string balance_chequing;
-	std::string balance_saving;
+	double chequing_balance;
+	double saving_balance;
 
 	
 public:
 	//Account(std::string ID, std::string chequing, std::string saving, std::string date);
 	Account (); //need default constructor
-	Account(Customer *customer, std::string account_name, std::string password, int ID, std::string balance_chequing, std::string balance_saving); 
-	std::string get_chequing_balance();
-	std::string get_saving_balance();	
+	Account(Customer *customer, std::string account_name, double chequing_balance, double saving_balance); 
+	double get_chequing_balance();
+	double get_saving_balance();	
 	void set_account_name(std::string account_name);
 	void set_customer(Customer *customer);
-	void set_password(std::string password);
-	void set_id(int ID);
-	std::string set_chequing_balance(double balance_chequing);
-	std::string set_saving_balance(double balance_saving);
+	double set_chequing_balance(double chequing_balance);
+	double set_saving_balance(double saving_balance);
 
 };
 #endif
