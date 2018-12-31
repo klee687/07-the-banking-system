@@ -5,7 +5,6 @@
 Account::Account(){}
 Account::Account(Customer *customer, std::string account_name, std::string password, int ID, std::string balance_chequing, std::string balance_saving): customer(customer), account_name(account_name), password(password), ID(ID), balance_chequing(balance_chequing), balance_saving(balance_saving){
 
-
 }
 
 std::string Account::get_saving_balance(){
