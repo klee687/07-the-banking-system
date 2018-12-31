@@ -26,35 +26,25 @@ class Account{
 	//std::string ID; //maybe you don't need this because can associate an Account with a Customer object instead of an ID .
 	
 	Customer * customer;
-	std::string chequing; //don't need.
-	std::string saving; //dont need
-	//std::string date; //add late if necessary
-		
-
-	double balance_chequing;
-	double balance_saving;
+	std::string account_name;
+	std::string password;
+	int ID;	
+	std::string balance_chequing;
+	std::string balance_saving;
 
 	
 public:
 	//Account(std::string ID, std::string chequing, std::string saving, std::string date);
 	Account (); //need default constructor
-	Account(Customer *customer, std::string chequing, std::string saving); 
-	//std::string getID();
-	std::string getChequing();
-	std::string getSaving();
-	//std::string getDate();
-
-	double get_chequing_balance();
-	double get_saving_balance();	
+	Account(Customer *customer, std::string account_name, std::string password, int ID, std::string balance_chequing, std::string balance_saving); 
+	std::string get_chequing_balance();
+	std::string get_saving_balance();	
 	void set_account_name(std::string account_name);
 	void set_customer(Customer *customer);
-	
-	void set_chequing_balance(double balance_chequing);
-	void set_saving_balance(double balance_saving);
+	void set_password(std::string password);
+	void set_id(int ID);
+	std::string set_chequing_balance(double balance_chequing);
+	std::string set_saving_balance(double balance_saving);
 
-	//void setID(std::string ID); //don;t need for above reasons (obv)
-	//void setChequing(std::string chequing); //unnecessary
-	//void setSaving(std::string saving); // ^^
-	//void setDate(std::string date); //maybe later
 };
 #endif
