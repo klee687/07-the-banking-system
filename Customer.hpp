@@ -33,7 +33,8 @@ public:
 	std::string set_pwd(std::string password);
 	void set_ID(std::string ID);
 	void set_name(std::string name);
-	
+	std::string get_ID();
+	std::string get_name();
 	//we want a method that adds to our std::vector<Account> accounuts; array
 	//Tip: for the parameters, u dont *need* the variable name. that;s why i have just Account. But this only works in method declarations. U *must* have it in your method *definitions* in your cpp file, jsut like i have done in Customer.cpp
 	void add_account(Account);
