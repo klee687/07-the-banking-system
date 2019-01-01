@@ -20,7 +20,6 @@ Customer::Customer(std::string name, std::string ID, std::string password) : nam
 
 //Customer also has a print_summary function that was in the Customer.hpp, so we shall add that here too
 void Customer::print_summary(){
-	std::cout << customer->name << 	
 }
 
 

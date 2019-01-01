@@ -103,15 +103,19 @@ int main(){
 			std::string id;
 			std::cout << "User's ID : \n" << std::endl;
 			std::cin >> id;
-			Customer user;
+			//Customer user;
+
+
+
+			/////////////////////LOOK HERE??????//////////////////////////////
+			Account acc; ////////////////////////////////////////// <  
+			acc = saving.Account::get_saving_balance; ///////////// < these two things will be under if statement below. im just tryina get saving balance! :/ i know its a mess right now!
 			std::ifstream ifile(id+".txt");
 			if (ifile) {
-				if(temp_vector.size() == 3){
+			//	std::cout << std::to_string(acc.get_saving_balance) << std::endl;
 				}
-				
-			}
 			else{
-				std::cout << "There is an issue with the file name, or the customer does not exist" << std::endl;;
+				std::cout << "There is an issue with the file name, or the customer does not exist" << std::endl;
 			}
 }
 
