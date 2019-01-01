@@ -8,13 +8,6 @@
 #include <fstream>
 #include <vector>
 
-void print(std::vector <std::string> const &a){
-	std::cout << "The elements are:: \n";
-	for (int i = 0; i <a.size(); i++){
-		std:: cout << a.at(i) << ' ' << i <<std::endl;
-	}
-}
-
 int main(){
 
 	
@@ -98,7 +91,28 @@ int main(){
 				customer.add_account(account);
 			}
 
+	
 			std::cout << temp_vector[1] << std::endl;
+		
+
+
+  			// The file exists, and is open for input
+			//std::ifstream ifile;
+			//find the informaiton of a customer
+
+			std::string id;
+			std::cout << "User's ID : \n" << std::endl;
+			std::cin >> id;
+			Customer user;
+			std::ifstream ifile(id+".txt");
+			if (ifile) {
+				if(temp_vector.size() == 3){
+				}
+				
+			}
+			else{
+				std::cout << "There is an issue with the file name, or the customer does not exist" << std::endl;;
+			}
 }
 
 

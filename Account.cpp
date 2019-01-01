@@ -10,6 +10,7 @@ Account::Account(Customer *customer, std::string account_name, double chequing_b
 double Account::get_saving_balance(){
 	return saving_balance;
 }
+
 double Account::set_saving_balance(double saving_balance){
 	this->saving_balance = saving_balance;
 }
@@ -23,10 +24,9 @@ double Account::set_chequing_balance(double chequing_balance){
 }
 
 void Account::set_account_name(std::string account_name){
-	if(account_name == "chequing") account_name = this->chequing_balance;
-	else if(account_name == "saving") account_name = this->saving_balance;
+	if(account_name == "chequing") this->account_name= account_name;
+	else if(account_name == "saving") this-> account_name= account_name;
 }
-
 
 void Account::set_customer(Customer *customer){
 	this->customer = customer;

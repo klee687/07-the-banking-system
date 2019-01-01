@@ -20,17 +20,10 @@ Customer::Customer(std::string name, std::string ID, std::string password) : nam
 
 //Customer also has a print_summary function that was in the Customer.hpp, so we shall add that here too
 void Customer::print_summary(){
-	
+	std::cout << customer->name << 	
 }
 
 
-//Also has a get balance
-
-
-double Customer::get_balance(){
-
-	//do as u wish
-}
 
 void Customer::add_account(Account account){
 
@@ -41,10 +34,12 @@ void Customer::set_name(std::string name){
 	this->name = name;
 }
 
-void Customer::set_password(std::string password){
-	this->password = password;
-}
-
 void Customer::set_ID(std::string ID){
+
 	this->ID = ID;
 }
+
+std::string Customer::set_pwd(std::string password){
+	this -> password = password;
+}
+
