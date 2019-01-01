@@ -100,23 +100,37 @@ int main(){
 			//std::ifstream ifile;
 			//find the informaiton of a customer
 
+
+		/**
+	Don't need this either because you already have the ID in the above Customer object.
 			std::string id;
 			std::cout << "User's ID : \n" << std::endl;
 			std::cin >> id;
-			//Customer user;
+			Customer user;
+	**/
+			
 
-
+		//Go to your Customer class and implement a get_ID method, so that then you can do std::string ID = customer.get_id();
 
 			/////////////////////LOOK HERE??????//////////////////////////////
-			Account acc; ////////////////////////////////////////// <  
-			acc = saving.Account::get_saving_balance; ///////////// < these two things will be under if statement below. im just tryina get saving balance! :/ i know its a mess right now!
+			//Account acc;  ///You're creating a new Account object. But above you already createda  Customer AND an Account object. It's the above Account object that has all the information saved. not this one. So you can use the above Account object.
+
+
+			//Yeah, no, u can't just make up your own language :p 
+			//acc = saving.Account::get_saving_balance; ///////////// < these two things will be under if statement below. im just tryina get saving balance! :/ i know its a mess right now!
+			
+			double saving = account.get_saving_balance();
+			/**
+			You actually don;'t need this since you already got the file information from above ^
 			std::ifstream ifile(id+".txt");
 			if (ifile) {
 			//	std::cout << std::to_string(acc.get_saving_balance) << std::endl;
 				}
 			else{
-				std::cout << "There is an issue with the file name, or the customer does not exist" << std::endl;
+				std::cout << "There is an issue with the file name, or the customer does not exist" << std::endl; //cute error message
 			}
+
+		**/
 }
 
 
