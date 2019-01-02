@@ -28,6 +28,10 @@ void Account::set_account_name(std::string account_name){
 	else if(account_name == "saving") this-> account_name= account_name;
 }
 
+std::string Account::get_account_name(){
+		return account_name;
+}
+
 void Account::set_customer(Customer *customer){
 	this->customer = customer;
 }

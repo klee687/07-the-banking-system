@@ -2,6 +2,7 @@
 //#include "Maintenance.hpp"
 //#include "Manager.hpp"
 #include "Customer.hpp"
+#include <iterator>
 #include <stdlib.h> //We need this to convert string to double
 #include "Account.hpp"
 #include <iostream>
@@ -12,30 +13,53 @@ void summary(Customer customer, Account account, int v_size){
 	customer.print_summary();
 	if (account.get_chequing_balance() !=0){
 	std::cout << "chequing: " << account.get_chequing_balance() << std::endl;
-	}else if (account.get_saving_balance() !=0){
+	}if (account.get_saving_balance() !=0){
 	std::cout << "saving: " <<account.get_saving_balance() << std::endl;
 	}
 	
 } //summary closing
 
 
-void open_acc(std::vector<std::string> temp_vector){	
-	
+void open_acc(std::vector<std::string> temp_vector, Account account, std::string file_name){	
+	std::string c_deposit;
+	std::string s_deposit;
 	int answr;
-		std::cout << "Account Open" << std::endl;
+	std::cout << "Account Open" << std::endl;
 		std::cout << "[1] chequing account\n[2] saving account \n[3] both" << std::endl;
 		std::cin >> answr;
 		if (answr == 1){
-			if (temp_vector[3] == "C"){
-				std::cout << "you already have a saving account." << std::endl;
+			if (account.get_chequing_balance() != 0){
+				std::cout << "you already have a chequing account." << std::endl;
+			}else{
+				std::cout << "How much do you want to deposit in youe Chequing account?" << std::endl;
+				std::cin >> c_deposit;
+				account.set_chequing_balance(atof(c_deposit.c_str()));
+				account.set_account_name("chequing");
+				temp_vector.insert(temp_vector.begin() + 2, c_deposit);
+				temp_vector.insert(temp_vector.begin() + 4, "CS");
+				
+				std::ofstream output_file(file_name);
+				std::ostream_iterator<std::string> output_iterator(output_file, " ");
+				std::copy(temp_vector.begin(), temp_vector.end() -1, output_iterator);
+						
 			}
 		}else if (answr == 2){
-			if (temp_vector[3] == "S"){
+			if (account.get_saving_balance() != 0){
 				std::cout << "you already have a saving account." << std::endl;
+			}else{
+				std::cout << "How much do you want to deposit in youe Saving account?" << std::endl;
+				std::cin >> s_deposit;
+				account.set_saving_balance(atof(s_deposit.c_str()));
+				account.set_account_name("saving");
+				temp_vector.insert(temp_vector.begin() + 3, s_deposit);
+				temp_vector.insert(temp_vector.begin() + 4, "CS");	
+				std::ofstream output_file(file_name);
+				std::ostream_iterator<std::string> output_iterator(output_file, " ");
+				std::copy(temp_vector.begin(), temp_vector.end()-1, output_iterator);
 			}
 		}else if (answr ==3){
-			if (temp_vector[3] =="C" || temp_vector[3] =="S" || temp_vector[3] == "CS"){
-				std::cout << "you already have one of the accounts or both" << std::endl;
+			if (account.get_chequing_balance() != 0 || account.get_saving_balance() != 0){
+				std::cout << "Both" << std::endl;
 			}
 		}else{
 			std::cout << "wrong input" << std::endl; 
@@ -98,7 +122,6 @@ int main(){
 				//
 				account.set_chequing_balance(atof(temp_vector[2].c_str())); //THe value of the text file is 100, but it;'s a string. So we need to convert it to a double
 				account.set_saving_balance(atof(temp_vector[3].c_str()));
-
 				account.set_customer(&customer);
 	
 				//Now lets add the account to customer's Account vector !
@@ -123,11 +146,12 @@ int main(){
 
 			
 			//Create Customer by manager
-			open_acc(temp_vector);			
+			open_acc(temp_vector, account, file_name);			
 
 } // main closing
 
-void input(std::string id){
+void input(){
+	std::string id;
 	std::cout << "User's ID : \n" << std::endl;
 	std::cin >> id;
 	std::ifstream ifile(id+".txt");

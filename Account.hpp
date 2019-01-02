@@ -41,6 +41,6 @@ public:
 	void set_customer(Customer *customer);
 	double set_chequing_balance(double chequing_balance);
 	double set_saving_balance(double saving_balance);
-
+	std::string get_account_name();
 };
 #endif
