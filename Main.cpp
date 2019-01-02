@@ -9,9 +9,6 @@
 #include <vector>
 
 void summary(Customer customer, Account account, int v_size){
-	//std::string ID = customer.get_ID();
-	//double chequing = account.get_chequing_balance(); 
-	//double saving = account.get_saving_balance();
 	customer.print_summary();
 	std::cout << "chequing: " << account.get_chequing_balance() << std::endl;
 	if (v_size == 4){
@@ -19,6 +16,29 @@ void summary(Customer customer, Account account, int v_size){
 	}
 } //summary closing
 
+
+void open_acc(){
+
+	
+	std::string id;
+	std::cout << "User's ID : \n" << std::endl;
+	std::cin >> id;
+	std::ifstream ifile(id+".txt");
+	int answr;
+	if (ifile) {
+		std::cout << "open a [1] chequing account or [2] saving account" << std::endl;
+		std::cin >> answr;
+		if (answr == 1){
+			if 
+		}
+		else if (answr == 2){}
+		else{
+			std::cout << "wrong input" << std::endl; 
+		}
+	}else{
+		std::cout << "A new client. yolo" << std::endl;
+	}
+}
 
 int main(){
 	/**
@@ -94,8 +114,15 @@ int main(){
 				//Now lets add the account to customer's Account vector !
 				account.set_customer(&customer); //remember, the set_customer takes a pointer, and it HAS to take a pointer. So we pass in the address of the customer object
 				customer.add_account(account);
+			}else{
+				std::cout << "invalid\n" << std::endl;
 			}
 			summary(customer, account, vector_size);
+
+			
+			//Create Customer by manager
+			open_acc();			
+
 } // main closing
 
 void input(std::string id){
@@ -109,3 +136,4 @@ void input(std::string id){
 		std::cout << "There is an issue with the file name, or the customer does not exist" << std::endl; //cute error message   ->>>>>>>>>>>> CUZ IM SYO FUCKING KAWAII! :3
 	}
 } //input closing 
+
