@@ -10,34 +10,36 @@
 
 void summary(Customer customer, Account account, int v_size){
 	customer.print_summary();
+	if (account.get_chequing_balance() !=0){
 	std::cout << "chequing: " << account.get_chequing_balance() << std::endl;
-	if (v_size == 4){
-		std::cout << "saving: " << account.get_saving_balance() << std::endl;
+	}else if (account.get_saving_balance() !=0){
+	std::cout << "saving: " <<account.get_saving_balance() << std::endl;
 	}
+	
 } //summary closing
 
 
-void open_acc(){
-
+void open_acc(std::vector<std::string> temp_vector){	
 	
-	std::string id;
-	std::cout << "User's ID : \n" << std::endl;
-	std::cin >> id;
-	std::ifstream ifile(id+".txt");
 	int answr;
-	if (ifile) {
-		std::cout << "open a [1] chequing account or [2] saving account" << std::endl;
+		std::cout << "Account Open" << std::endl;
+		std::cout << "[1] chequing account\n[2] saving account \n[3] both" << std::endl;
 		std::cin >> answr;
 		if (answr == 1){
-			if 
-		}
-		else if (answr == 2){}
-		else{
+			if (temp_vector[3] == "C"){
+				std::cout << "you already have a saving account." << std::endl;
+			}
+		}else if (answr == 2){
+			if (temp_vector[3] == "S"){
+				std::cout << "you already have a saving account." << std::endl;
+			}
+		}else if (answr ==3){
+			if (temp_vector[3] =="C" || temp_vector[3] =="S" || temp_vector[3] == "CS"){
+				std::cout << "you already have one of the accounts or both" << std::endl;
+			}
+		}else{
 			std::cout << "wrong input" << std::endl; 
 		}
-	}else{
-		std::cout << "A new client. yolo" << std::endl;
-	}
 }
 
 int main(){
@@ -60,19 +62,15 @@ int main(){
 			If they add 2, then they have a checking AND a saving. So we can use the size of the vector to our advantage. Right now, our temp_vector will have ID name checking saving, which means the vector will be of size 4. But if the user says "fuck it" i dont want a saving, then the text file would have ID name checking, making our vector size 3.
 
 		Now we know we want to create Customers,  but the constructor of a Customer takes name, and ID
+	*/	
 	
-	**/		
 			std::ifstream file;
 			std::string file_name = "78982.txt";
-			
 			std::vector<std::string> temp_vector;
 			std::string token;
-						
+					
 			int vector_size;
-
-
 			file.open(file_name.c_str());
-
 			while(file >> token){
 				temp_vector.push_back(token);
 			}
@@ -80,9 +78,9 @@ int main(){
 			vector_size = temp_vector.size(); 
 
 			//Check if size is 3 or 4. If it's 3, then they only made a checking account, if it's 4, then they made a saving accouunt too
-			/**
+			/*
 				Thankfully we have structure in our text file, so we know index 0: ID, index 1:name, index 2:checking, index 3: saving (optional)
-			**/
+			*/
 
 
 			//Create Customer object
@@ -90,12 +88,12 @@ int main(){
 			Customer customer;
 			Account account;
 
-			if(vector_size == 4){
+			if(vector_size == 5){
 
 				customer.set_ID(temp_vector[0]);
 				customer.set_name(temp_vector[1]);
 
-				account.set_account_name("checking"); // look at how ive implemented set_account_name in the Account class, so u dont get confused by this
+				account.set_account_name("chequing"); // look at how ive implemented set_account_name in the Account class, so u dont get confused by this
 				account.set_account_name("saving");
 				//
 				account.set_chequing_balance(atof(temp_vector[2].c_str())); //THe value of the text file is 100, but it;'s a string. So we need to convert it to a double
@@ -106,12 +104,16 @@ int main(){
 				//Now lets add the account to customer's Account vector !
 				customer.add_account(account);		
 			}
-			else if(vector_size == 3){
+			else if(vector_size == 4){
 				customer.set_ID(temp_vector[0]);
 				customer.set_name(temp_vector[1]);
-				account.set_account_name("checking");
-				account.set_chequing_balance(atof(temp_vector[2].c_str()));
-				//Now lets add the account to customer's Account vector !
+				if (temp_vector[3] == "C"){
+					account.set_account_name("chequing");
+					account.set_chequing_balance(atof(temp_vector[2].c_str()));
+				}else if (temp_vector[3] == "S"){
+					account.set_account_name("saving");
+					account.set_saving_balance(atof(temp_vector[2].c_str()));				
+				}//Now lets add the account to customer's Account vector !
 				account.set_customer(&customer); //remember, the set_customer takes a pointer, and it HAS to take a pointer. So we pass in the address of the customer object
 				customer.add_account(account);
 			}else{
@@ -121,7 +123,7 @@ int main(){
 
 			
 			//Create Customer by manager
-			open_acc();			
+			open_acc(temp_vector);			
 
 } // main closing
 
@@ -136,4 +138,3 @@ void input(std::string id){
 		std::cout << "There is an issue with the file name, or the customer does not exist" << std::endl; //cute error message   ->>>>>>>>>>>> CUZ IM SYO FUCKING KAWAII! :3
 	}
 } //input closing 
-
