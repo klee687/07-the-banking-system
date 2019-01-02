@@ -10,14 +10,15 @@ class Manager {
 
 	//These are all private by default. 
 	std::string ID;
+	std::vector<std::string> temp_vector;
+	std::string file_name;
 	public:		
 		//Declare constructor
 		Manager(std::string ID);
-		
-		//I don;t remember the details, but I think it's the manager that's alllowed to add accounts?
 
 		void add_account(Account account);
-};
+		void open_acc(std::vector<std::string> temp_vector, Account account, std::string file_name);
+};	
 
 
 #endif
