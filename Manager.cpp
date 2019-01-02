@@ -5,6 +5,7 @@
 #include <stdlib.h> //We need this to convert string to double
 #include <iostream>
 #include <vector>
+#include <fstream>
 
 
 Manager::Manager(std::string ID) : ID(ID) {}
