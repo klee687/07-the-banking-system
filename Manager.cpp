@@ -15,7 +15,6 @@ void Manager::add_account(Account account){
 	//isteam -> writing new account
 }
 
-
 void Manager::open_acc(std::vector<std::string> temp_vector, Account account, std::string file_name){	
 	std::string c_deposit;
 	std::string s_deposit;

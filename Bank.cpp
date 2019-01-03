@@ -1,37 +1,23 @@
-/**
+
 
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <vector>
 
-These includes should be in the Bank.hpp!!
-
-**/
 #include "Bank.hpp"
 #include "Account.hpp"
+#include "Customer.hpp"
 
-Bank::Bank(){}
+Bank::Bank(std::string ID): ID(ID) {}
 
-Account Bank::openFile(){
-
-	std::ifstream file;
-	std::string file_name = "text.txt";
-	std::string token;
-	std::vector<std::string> info;
-
-	file.open(file_name.c_str());
-
-	while(file >> token){
-		//std::cout<<token<<std::endl;
-		info.push_back(token);
-	}
-
-	
-
-
-
+void Bank::summary(Customer customer, Account account, int v_size){
+	customer.print_summary();
+	if (account.get_chequing_balance() !=0){
+		std::cout << "Chequing: " << account.get_chequing_balance() << std::endl;
+	}if (account.get_saving_balance() !=0){
+		std::cout << "Saving: " <<account.get_saving_balance() << std::endl;
+	}	
 }
 
 

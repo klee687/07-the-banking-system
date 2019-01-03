@@ -2,20 +2,41 @@
 #include "Customer.hpp"
 #include "Account.hpp"
 #include "Manager.hpp"
+#include "Bank.hpp"
 #include <iterator>
 #include <stdlib.h> //We need this to convert string to double
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <string>
+			
 
-void summary(Customer customer, Account account, int v_size){
-	customer.print_summary();
-	if (account.get_chequing_balance() !=0){
-	std::cout << "Chequing: " << account.get_chequing_balance() << std::endl;
-	}if (account.get_saving_balance() !=0){
-	std::cout << "Saving: " <<account.get_saving_balance() << std::endl;
+
+void transaction(Account account, std::vector<std::string> temp_vector, std::string file_name){
+	int a1, a2, a3, a4;
+	double c_dep;
+label1:	std::cout << "\n[1] Deposit\n[2] Withdrawal\n[3] Move money from C -> S\n[4] Move money from S -> C" << std::endl;
+	std::cin >> a1;
+	if (a1 == 1){
+		std::cout << "[1] Chequing deposit\n[2] Saving deposit" << std::endl;
+		std::cin >> a2;
+		if (a2 == 1){
+			if (account.get_chequing_balance() <= 0){
+				std::cout << "You might not have a chequing account." <<std::endl;	
+				goto label1;
+			}else{
+				std::cout << "How much do you want to deposit in your chequing account?		: " <<std::endl;
+				std::cin >> c_dep;
+				account.set_chequing_balance(account.get_chequing_balance()+c_dep);
+				std::cout << "Your chequing balance is now $" << account.get_chequing_balance() << std::endl;
+				temp_vector[2] = std::to_string(account.get_chequing_balance());
+				std::ofstream output_file(file_name);
+				std::ostream_iterator<std::string> output_iterator(output_file, " ");
+				std::copy(temp_vector.begin(), temp_vector.end(), output_iterator);				
+			}	
+		}
 	}
-} //summary closing
+}		
 
 int main(){
 	/**
@@ -95,11 +116,13 @@ int main(){
 			}else{
 				std::cout << "invalid\n" << std::endl;
 			}
-			summary(customer, account, vector_size);
+			Bank bank(customer.get_ID());
+			bank.summary(customer, account, vector_size);
+			
 
 			Manager manager(customer.get_ID());
-			manager.open_acc(temp_vector, account, file_name);			
-
+			//manager.open_acc(temp_vector, account, file_name);			
+			transaction(account, temp_vector,file_name);
 } // main closing
 
 void input(){
