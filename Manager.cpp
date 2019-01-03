@@ -23,25 +23,25 @@ void Manager::open_acc(std::vector<std::string> temp_vector, Account account, st
 		std::cout << "[1] chequing account\n[2] saving account \n[3] both" << std::endl;
 		std::cin >> answr;
 		if (answr == 1){
-			if (account.get_chequing_balance() != 0){
+			if (account.get_account_name() == "chequing" ){
 				std::cout << "you already have a chequing account." << std::endl;
 			}
 			
 			else{
-		label_1:	std::cout << "How much do you want to deposit in youe Chequing account?" << std::endl;
+		label_1:	std::cout << "How much do you want to deposit in your Chequing account?" << std::endl;
 				std::cin >> c_deposit;
 				if (atof(c_deposit.c_str()) <= 0) {
 					std::cout << "it should be more than $0. Please try again!" << std::endl;
 					goto label_1;
 				}
-				account.set_chequing_balance(atof(c_deposit.c_str()));
 				account.set_account_name("chequing");
+				account.set_chequing_balance(atof(c_deposit.c_str()));				
 				temp_vector.insert(temp_vector.begin() + 2, c_deposit);
 				temp_vector.insert(temp_vector.begin() + 4, "CS");
 				
 				std::ofstream output_file(file_name);
 				std::ostream_iterator<std::string> output_iterator(output_file, " ");
-				std::copy(temp_vector.begin(), temp_vector.end() -1, output_iterator);		
+				std::copy(temp_vector.begin(), temp_vector.end() -1, output_iterator);	
 			}
 
 		}else if (answr == 2){

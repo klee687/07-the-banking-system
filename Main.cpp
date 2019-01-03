@@ -21,7 +21,7 @@ label1:	std::cout << "\n[1] Deposit\n[2] Withdrawal\n[3] Move money from C -> S\
 		std::cout << "[1] Chequing deposit\n[2] Saving deposit" << std::endl;
 		std::cin >> a2;
 		if (a2 == 1){
-			if (account.get_chequing_balance() <= 0){
+			if (account.get_account_name() != "chequing"){
 				std::cout << "You might not have a chequing account." <<std::endl;	
 				goto label1;
 			}else{
@@ -83,8 +83,6 @@ int main(){
 
 			Customer customer;
 			Account account;
-			
-
 
 			if(vector_size == 5){
 
@@ -92,35 +90,42 @@ int main(){
 				customer.set_name(temp_vector[1]);
 
 				account.set_account_name("chequing"); // look at how ive implemented set_account_name in the Account class, so u dont get confused by this
-				account.set_account_name("saving");
-				//
 				account.set_chequing_balance(atof(temp_vector[2].c_str())); //THe value of the text file is 100, but it;'s a string. So we need to convert it to a double
+				account.set_account_name("saving");
 				account.set_saving_balance(atof(temp_vector[3].c_str()));
 				account.set_customer(&customer);
-	
-				//Now lets add the account to customer's Account vector !
-				customer.add_account(account);		
+				customer.add_account(account);	//Now lets add the account to customer's Account vector !	
 			}
 			else if(vector_size == 4){
 				customer.set_ID(temp_vector[0]);
 				customer.set_name(temp_vector[1]);
+
 				if (temp_vector[3] == "C"){
 					account.set_account_name("chequing");
 					account.set_chequing_balance(atof(temp_vector[2].c_str()));
-				}else if (temp_vector[3] == "S"){
+					account.set_customer(&customer); 
+					customer.add_account(account);				
+				}else if(temp_vector[3] == "S"){
 					account.set_account_name("saving");
-					account.set_saving_balance(atof(temp_vector[2].c_str()));				
-				}//Now lets add the account to customer's Account vector !
-				account.set_customer(&customer); //remember, the set_customer takes a pointer, and it HAS to take a pointer. So we pass in the address of the customer object
-				customer.add_account(account);
-			}else{
-				std::cout << "invalid\n" << std::endl;
+					account.set_saving_balance(atof(temp_vector[2].c_str()));
+					account.set_customer(&customer); 
+					customer.add_account(account);
+				}
+				
 			}
+			else std::cout << "invalid. vector size overflow\n" << std::endl;
+				
+
+
+
+
 			Bank bank(customer.get_ID());
 			bank.summary(customer, account, vector_size);
-			
 
 			Manager manager(customer.get_ID());
+			std::cout << vector_size << std::endl;
+			std::cout << "S" <<  std::to_string(account.get_saving_balance()) << std::endl;
+			std::cout << "C" << std::to_string(account.get_chequing_balance()) << std::endl;
 			//manager.open_acc(temp_vector, account, file_name);			
 			transaction(account, temp_vector,file_name);
 } // main closing
