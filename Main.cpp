@@ -62,7 +62,7 @@ int main(){
 
 			Customer customer;
 			Account account;
-			Manager manager;
+			
 
 
 			if(vector_size == 5){
@@ -97,8 +97,7 @@ int main(){
 			}
 			summary(customer, account, vector_size);
 
-			
-			//Create Customer by manager
+			Manager manager(customer.get_ID());
 			manager.open_acc(temp_vector, account, file_name);			
 
 } // main closing

@@ -7,7 +7,6 @@
 #include <vector>
 #include <fstream>
 
-
 Manager::Manager(std::string ID) : ID(ID) {}
 
 
