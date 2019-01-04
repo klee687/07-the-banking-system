@@ -23,7 +23,7 @@ void Manager::open_acc(std::vector<std::string> temp_vector, Account account, st
 		std::cout << "[1] chequing account\n[2] saving account \n[3] both" << std::endl;
 		std::cin >> answr;
 		if (answr == 1){
-			if (account.get_account_name() == "chequing" ){
+			if (account.get_account_name_C() == "chequing" ){
 				std::cout << "you already have a chequing account." << std::endl;
 			}
 			
@@ -34,7 +34,7 @@ void Manager::open_acc(std::vector<std::string> temp_vector, Account account, st
 					std::cout << "it should be more than $0. Please try again!" << std::endl;
 					goto label_1;
 				}
-				account.set_account_name("chequing");
+				account.set_account_name_C("chequing");
 				account.set_chequing_balance(atof(c_deposit.c_str()));				
 				temp_vector.insert(temp_vector.begin() + 2, c_deposit);
 				temp_vector.insert(temp_vector.begin() + 4, "CS");
@@ -45,7 +45,7 @@ void Manager::open_acc(std::vector<std::string> temp_vector, Account account, st
 			}
 
 		}else if (answr == 2){
-			if (account.get_saving_balance() != 0){
+			if (account.get_account_name_S()=="saving"){
 				std::cout << "you already have a saving account." << std::endl;
 			}else{
 		label_2:	std::cout << "How much do you want to deposit in youe Saving account?" << std::endl;
@@ -55,7 +55,7 @@ void Manager::open_acc(std::vector<std::string> temp_vector, Account account, st
 					goto label_2;
 				}
 				account.set_saving_balance(atof(s_deposit.c_str()));
-				account.set_account_name("saving");
+				account.set_account_name_S("saving");
 				temp_vector.insert(temp_vector.begin() + 3, s_deposit);
 				temp_vector.insert(temp_vector.begin() + 4, "CS");	
 				std::ofstream output_file(file_name);

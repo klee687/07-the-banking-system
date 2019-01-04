@@ -4,6 +4,7 @@
 
 #include "Customer.hpp"
 #include "Account.hpp"
+#include "Bank.hpp"
 
 class Customer;
 
@@ -16,5 +17,6 @@ class Create_Customer{
 	public:
 		Create_Customer();
 		void create_customer(std::string file_name);
+		void setup(Account account, Customer customer);
 };
 #endif

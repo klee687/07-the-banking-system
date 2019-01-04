@@ -26,7 +26,8 @@ class Account{
 	//std::string ID; //maybe you don't need this because can associate an Account with a Customer object instead of an ID .
 	
 	Customer *customer;
-	std::string account_name;
+	std::string account_name_C;
+	std::string account_name_S;
 	double chequing_balance;
 	double saving_balance;
 
@@ -34,13 +35,15 @@ class Account{
 public:
 	//Account(std::string ID, std::string chequing, std::string saving, std::string date);
 	Account (); //need default constructor
-	Account(Customer *customer, std::string account_name, double chequing_balance, double saving_balance); 
+	Account(Customer *customer, std::string account_name_C, std::string account_name_S, double chequing_balance, double saving_balance); 
 	double get_chequing_balance();
 	double get_saving_balance();	
-	void set_account_name(std::string account_name);
+	void set_account_name_C(std::string account_name_C);
+	void set_account_name_S(std::string account_name_S);
 	void set_customer(Customer *customer);
 	double set_chequing_balance(double chequing_balance);
 	double set_saving_balance(double saving_balance);
-	std::string get_account_name();
+	std::string get_account_name_C();
+	std::string get_account_name_S();
 };
 #endif

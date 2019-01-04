@@ -11,7 +11,21 @@
 #include <vector>
 #include <string>
 			
-
+void input(){
+	Create_Customer CC;
+	std::string id;
+	std::cout << "User's ID : \n" << std::endl;
+	std::cin >> id;
+	std::string id_input = id+".txt";
+	std::ifstream ifile(id_input);
+	if (ifile) {
+		std::cout << "This ID exist \n" << std::endl;
+		CC.create_customer(id_input);		
+	}
+	else{
+		std::cout << "There is an issue with the file name, or the customer does not exist" << std::endl; //cute error message   ->>>>>>>>>>>> CUZ IM SYO FUCKING KAWAII! :3
+	}
+} //input closing 
 
 void transaction(Account account, std::vector<std::string> temp_vector, std::string file_name){
 	int a1, a2, a3, a4;
@@ -22,7 +36,7 @@ label1:	std::cout << "\n[1] Deposit\n[2] Withdrawal\n[3] Move money from C -> S\
 		std::cout << "[1] Chequing deposit\n[2] Saving deposit" << std::endl;
 		std::cin >> a2;
 		if (a2 == 1){
-			if (account.get_account_name() != "chequing"){
+			if (account.get_account_name_C() != "chequing"){
 				std::cout << "You might not have a chequing account." <<std::endl;	
 				goto label1;
 			}else{
@@ -63,7 +77,9 @@ int main(){
 			Create_Customer CC;
 			Customer customer;
 			Account account;
-			CC.create_customer("78982.txt");
+			input();
+
+//			CC.create_customer("78982.txt");
 
 			//Bank bank(customer.get_ID());
 			//bank.summary(customer, account, vector_size);
@@ -76,15 +92,4 @@ int main(){
 			//transaction(account, temp_vector,file_name);
 } // main closing
 
-void input(){
-	std::string id;
-	std::cout << "User's ID : \n" << std::endl;
-	std::cin >> id;
-	std::ifstream ifile(id+".txt");
-	if (ifile) {
-		std::cout << "This ID exist \n" << std::endl;
-	}
-	else{
-		std::cout << "There is an issue with the file name, or the customer does not exist" << std::endl; //cute error message   ->>>>>>>>>>>> CUZ IM SYO FUCKING KAWAII! :3
-	}
-} //input closing 
+

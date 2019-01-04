@@ -29,12 +29,12 @@ void maintenance(int id);
 
 class Bank{
 	std::string ID; 
-	int v_size;
+	
 	
 
 public:
 	Bank(std::string ID); //add as u need
-	void summary(Customer customer, Account account, int v_size);
+	void summary(Customer customer, Account account);
 };
 
 

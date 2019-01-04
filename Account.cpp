@@ -3,7 +3,7 @@
 //Account has a constructor
 //Account::Account(std::string ID, std::string chequing, std::string saving, std::string date) : ID(ID), chequing(chequing), saving(saving), date(date) {}
 Account::Account(){}
-Account::Account(Customer *customer, std::string account_name, double chequing_balance, double saving_balance): customer(customer), account_name(account_name), chequing_balance(chequing_balance), saving_balance(saving_balance){
+Account::Account(Customer *customer, std::string account_name_C, std::string account_name_S, double chequing_balance, double saving_balance): customer(customer), account_name_C(account_name_C), account_name_S(account_name_S), chequing_balance(chequing_balance), saving_balance(saving_balance){
 
 }
 
@@ -23,13 +23,20 @@ double Account::set_chequing_balance(double chequing_balance){
 	this->chequing_balance = chequing_balance;	
 }
 
-void Account::set_account_name(std::string account_name){
-	if(account_name == "chequing") this->account_name= account_name;
-	else if(account_name == "saving") this-> account_name= account_name;
+void Account::set_account_name_C(std::string account_name_C){
+	this->account_name_C= account_name_C;
 }
 
-std::string Account::get_account_name(){
-		return account_name;
+void Account::set_account_name_S(std::string account_name_S){
+	this-> account_name_S= account_name_S;	
+}
+
+std::string Account::get_account_name_C(){
+	return account_name_C;
+}
+
+std::string Account::get_account_name_S(){
+	return account_name_S;
 }
 
 void Account::set_customer(Customer *customer){

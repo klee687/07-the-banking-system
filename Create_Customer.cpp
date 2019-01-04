@@ -36,30 +36,36 @@ void Create_Customer::create_customer(std::string file_name){
 		customer.set_ID(temp_vector[0]);
 		customer.set_name(temp_vector[1]);
 
-		account.set_account_name("chequing"); // look at how ive implemented set_account_name in the Account class, so u dont get confused by this
+		account.set_account_name_C("chequing"); // look at how ive implemented set_account_name in the Account class, so u dont get confused by this
+		account.set_account_name_S("saving");
 		account.set_chequing_balance(atof(temp_vector[2].c_str())); //THe value of the text file is 100, but it;'s a string. So we need to convert it to a double
-		account.set_account_name("saving");
 		account.set_saving_balance(atof(temp_vector[3].c_str()));
-		account.set_customer(&customer);
-		customer.add_account(account);	//Now lets add the account to customer's Account vector !	
+		setup(account, customer);		
 	}
 	else if(vector_size == 4){
 		customer.set_ID(temp_vector[0]);
 		customer.set_name(temp_vector[1]);
 
 		if (temp_vector[3] == "C"){
-			account.set_account_name("chequing");
+			account.set_account_name_C("chequing");
 			account.set_chequing_balance(atof(temp_vector[2].c_str()));
 			account.set_customer(&customer); 
 			customer.add_account(account);				
 		}else if(temp_vector[3] == "S"){
-			account.set_account_name("saving");
+			account.set_account_name_S("saving");
 			account.set_saving_balance(atof(temp_vector[2].c_str()));
-			account.set_customer(&customer); 
-			customer.add_account(account);
+			setup(account, customer);
 		}
 		
 	}
 	else std::cout << "invalid. vector size overflow\n" << std::endl;
+
+	Bank bank(customer.get_ID());
+	bank.summary(customer,account);	
 }
 
+
+void Create_Customer::setup(Account account, Customer customer){ //Now lets add the account to customer's Account vector !
+	account.set_customer(&customer);
+	customer.add_account(account);
+}

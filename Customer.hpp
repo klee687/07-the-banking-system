@@ -29,7 +29,6 @@ public:
 
 	//you can probably check your account summary
 
-	void print_summary();
 	std::string set_pwd(std::string password);
 	void set_ID(std::string ID);
 	void set_name(std::string name);
