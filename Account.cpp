@@ -1,4 +1,3 @@
-
 #include "Account.hpp"
 
 //Account has a constructor

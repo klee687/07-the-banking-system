@@ -25,7 +25,7 @@ class Customer; //Please read about cylic redundanceies !!
 class Account{
 	//std::string ID; //maybe you don't need this because can associate an Account with a Customer object instead of an ID .
 	
-	Customer * customer;
+	Customer *customer;
 	std::string account_name;
 	double chequing_balance;
 	double saving_balance;
