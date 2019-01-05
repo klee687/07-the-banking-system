@@ -1,4 +1,5 @@
 #include "Manager.hpp"
+#include "Move_Money.hpp"
 #include "Transaction.hpp"
 #include <iterator>
 #include <stdlib.h> 
@@ -11,12 +12,15 @@
 Transaction::Transaction(){}
 
 void Transaction::transaction(Account account, std::vector<std::string> temp_vector, std::string file_name){
+	Move_Money mm;
 	int a1;
 	std::ofstream output_file(file_name);
 label1:	std::cout << "\n[1] Deposit\n[2] Withdrawal\n[3] Move money from C -> S\n[4] Move money from S -> C" << std::endl;
 	std::cin >> a1;
 	if (a1 == 1) deposit(account, temp_vector, file_name);
 	else if (a1 == 2) withdrawal(account, temp_vector, file_name);
+	else if (a1 == 3) mm.c_to_s(account, temp_vector, file_name);
+	else if (a1 == 4) mm.s_to_c(account, temp_vector, file_name);
 }
 
 
