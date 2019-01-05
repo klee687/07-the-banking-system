@@ -19,7 +19,7 @@ void input(){
 	std::string id_input = id+".txt";
 	std::ifstream ifile(id_input);
 	if (ifile) {
-		std::cout << "This ID exist \n" << std::endl;
+		std::cout << "This ID exists \n" << std::endl;
 		CC.create_customer(id_input);		
 	}
 	else{
@@ -28,6 +28,7 @@ void input(){
 } //input closing 
 
 void transaction(Account account, std::vector<std::string> temp_vector, std::string file_name){
+	
 	int a1, a2, a3, a4;
 	double c_dep;
 label1:	std::cout << "\n[1] Deposit\n[2] Withdrawal\n[3] Move money from C -> S\n[4] Move money from S -> C" << std::endl;
