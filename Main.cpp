@@ -69,7 +69,6 @@ int main(){
 	std::cout << "ID :	" <<std::endl;
 	std::cin >> id;
 	std::string id_input = id+".txt";
-
 	CC.create_customer(id_input);		
 } // main closing
 

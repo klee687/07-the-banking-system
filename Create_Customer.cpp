@@ -45,6 +45,7 @@ void Create_Customer::create_customer(std::string file_name){
 		if (temp_vector[4] == "C"){
 			account.set_account_name_C("chequing");
 			account.set_chequing_balance(atof(temp_vector[2].c_str()));
+			customer.set_password(temp_vector[3]);
 			setup(account, customer);
 		}else if(temp_vector[4] == "S"){
 			account.set_account_name_S("saving");
@@ -60,8 +61,8 @@ void Create_Customer::create_customer(std::string file_name){
 	}
 	
 	password(customer, file_name, temp_vector);
-	bank.summary(customer,account);
 	money.transaction(account, temp_vector, file_name);
+	
 }
 
 

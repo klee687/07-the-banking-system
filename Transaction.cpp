@@ -13,14 +13,18 @@ Transaction::Transaction(){}
 
 void Transaction::transaction(Account account, std::vector<std::string> temp_vector, std::string file_name){
 	Move_Money mm;
+	Manager manager;
 	int a1;
 	std::ofstream output_file(file_name);
-label1:	std::cout << "\n[1] Deposit\n[2] Withdrawal\n[3] Move money from C -> S\n[4] Move money from S -> C" << std::endl;
+label1:	std::cout << "\n[1] Deposit\n[2] Withdrawal\n[3] Move money from C -> S\n[4] Move money from S -> C\n[5] Open an account\n[6] Close an account\n[7] Exit" << std::endl;
 	std::cin >> a1;
 	if (a1 == 1) deposit(account, temp_vector, file_name);
 	else if (a1 == 2) withdrawal(account, temp_vector, file_name);
 	else if (a1 == 3) mm.c_to_s(account, temp_vector, file_name);
 	else if (a1 == 4) mm.s_to_c(account, temp_vector, file_name);
+	else if (a1 == 5) manager.open_acc(temp_vector, account, file_name); 
+//	else if (a1 == 6) manager.close_acc(temp_vector, account, file_name);
+	if (a1 == 7) closing(temp_vector, file_name);
 	return;
 }
 
@@ -68,6 +72,11 @@ void Transaction::deposit(Account account, std::vector<std::string> temp_vector,
 	return;
 } //deposit
 
+void Transaction::closing(std::vector<std::string> temp_vector, std::string file_name){
+	std::ofstream output_file(file_name);
+	std::ostream_iterator<std::string> output_iterator(output_file, " ");
+	std::copy(temp_vector.begin(), temp_vector.end(), output_iterator);	
+}
 
 
 void Transaction::withdrawal(Account account, std::vector<std::string> temp_vector, std::string file_name){
