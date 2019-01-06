@@ -1,6 +1,8 @@
 #include "Customer.hpp"
 #include <stdlib.h>
 #include <iostream>
+#include <string>
+#include <vector>
 Customer::Customer(){}
 Customer::Customer(std::string name, std::string ID, std::string password) : name(name), ID(ID), password(password){
 
@@ -19,8 +21,13 @@ Customer::Customer(std::string name, std::string ID, std::string password) : nam
 
 
 void Customer::add_account(Account account){
-
 	this->accounts.push_back(account);
+}
+
+void Customer::return_acc(){
+	for(int i = 0; i < this->accounts.size(); i++){
+	   	std::cout<< this->accounts[i].get_name() <<std::endl;
+	}
 }
 
 void Customer::set_name(std::string name){

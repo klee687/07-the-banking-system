@@ -15,8 +15,6 @@ class Manager {
 	public:		
 		//Declare constructor
 		Manager(std::string ID);
-
-		void add_account(Account account);
 		void open_acc(std::vector<std::string> temp_vector, Account account, std::string file_name);
 };	
 
