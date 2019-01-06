@@ -10,9 +10,42 @@
 #include <fstream>
 #include <vector>
 #include <string>
-	Create_Customer CC;
 	Customer customer;
-	Account account;		
+	Account account;
+	Create_Customer CC;	
+/*
+void login(){
+	std::string id, pwd;
+	//std::string id_input = id+".txt";
+	//std::ifstream ifile(id_input);
+
+	std::cout << "------------------ATM------------------" << std::endl;
+	std::cout << "Insert your ID and password" << std::endl;
+	std::cout << "ID :	" <<std::endl;
+	std::cin >> id;
+
+	std::string id_input = id+".txt";
+	std::ifstream ifile(id_input);
+	CC.create_customer(id_input);
+	std::cout << account.get_saving_balance() << std::endl;
+	std::cout << customer.get_password() << std::endl;
+	if (!ifile){
+		std::cout << "Invalid ID." << std::endl;
+		login();
+	}
+	
+	CC.create_customer(id_input);
+	std::cout << "Password :	" << std::endl;
+	std::cin >> pwd;
+	std::cout << customer.get_password() << std::endl;
+	if (customer.get_password()) != pwd){
+		std::cout << "wrong password. Try again." << std::endl;	
+		login();
+	}
+	
+	
+
+}		
 void input(){
 	std::string id;
 	std::cout << "User's ID : \n" << std::endl;
@@ -28,11 +61,36 @@ void input(){
 	}
 } //input closing 
 
-
+*/
 int main(){
-			std::cout << "------------------ATM------------------" std::endl;
-			st						
+	std::string id;
+	std::cout << "------------------ATM------------------" << std::endl;
+	std::cout << "Insert your ID and password" << std::endl;
+	std::cout << "ID :	" <<std::endl;
+	std::cin >> id;
+	std::string id_input = id+".txt";
 
+	CC.create_customer(id_input);		
 } // main closing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

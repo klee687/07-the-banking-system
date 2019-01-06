@@ -17,5 +17,6 @@ class Create_Customer{
 		Create_Customer();
 		void create_customer(std::string file_name);
 		void setup(Account account, Customer customer); 
+		void password(Customer customer, std::string file_name, std::vector<std::string> temp_vector);
 };
 #endif

@@ -30,8 +30,12 @@ void Customer::set_name(std::string name){
 }
 
 void Customer::set_ID(std::string ID){
-
 	this->ID = ID;
+}
+
+
+std::string Customer::get_password(){
+	return password;
 }
 
 std::string Customer::get_name(){
@@ -42,7 +46,7 @@ std::string Customer::get_ID(){
 	return ID;
 }
 
-std::string Customer::set_pwd(std::string password){
+void Customer::set_password(std::string password){
 	this -> password = password;
 }
 

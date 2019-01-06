@@ -21,6 +21,7 @@ label1:	std::cout << "\n[1] Deposit\n[2] Withdrawal\n[3] Move money from C -> S\
 	else if (a1 == 2) withdrawal(account, temp_vector, file_name);
 	else if (a1 == 3) mm.c_to_s(account, temp_vector, file_name);
 	else if (a1 == 4) mm.s_to_c(account, temp_vector, file_name);
+	return;
 }
 
 
@@ -64,6 +65,7 @@ void Transaction::deposit(Account account, std::vector<std::string> temp_vector,
 			}	
 		}
 	}
+	return;
 } //deposit
 
 
@@ -138,8 +140,8 @@ void Transaction::withdrawal(Account account, std::vector<std::string> temp_vect
 				sub_wit(account, temp_vector,s_wit,file_name, 2);
 			}
 		}
-	}	
-
+	}
+	return;	
 }//withdraw
 
 void Transaction::sub_wit(Account account, std::vector<std::string> temp_vector, double in, std::string file_name, int i){
@@ -166,6 +168,7 @@ void Transaction::sub_wit(Account account, std::vector<std::string> temp_vector,
 			std::copy(temp_vector.begin(), temp_vector.end(), output_iterator);
 		}
 	}
+	return;
 }
 
 
