@@ -1,4 +1,5 @@
 #include "Customer.hpp"
+#include "Create_Manager.hpp"
 #include "Account.hpp"
 #include "Open_Account.hpp"
 #include "Transaction.hpp"
@@ -11,15 +12,28 @@
 Open_Account::Open_Account(){}
 
 void Open_Account::open_acc(std::vector<std::string> temp_vector, Account account, std::string file_name){
+	Manager m;
+	Create_Manager cm;
+	cm.create_manager("manager.txt", m);
 	std::string c_deposit, s_deposit, manager_id, manager_pwd;
 	int answr;
 
 	std::cout << "Manager ID: " << std::endl;
 	std::cin >> manager_id;
-	
+	std::cout << "This" << m.get_ID() <<std::endl;
+	if (m.get_ID() != manager_id){
+		std::cout << "Wrong ID or it does not exist\n" << std::endl;	
+		open_acc(temp_vector, account, file_name);
+	}
+	std::cout << "password: " << std::endl;
+	std::cin >> manager_pwd;
+	if (m.get_password() !=  manager_pwd){
+		std::cout << "Wrong password " <<std::endl;
+		open_acc(temp_vector, account, file_name);
 
-
-
+	}else{
+		std::cout << "Correct password" << std::endl;
+}
 		std::cout << "Account Open" << std::endl;
 		std::cout << "[1] chequing account\n[2] saving account \n[3] both" << std::endl;
 		std::cin >> answr;

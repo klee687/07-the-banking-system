@@ -1,5 +1,4 @@
-#include "Customer.hpp"
-#include "Account.hpp"
+
 #include "Manager.hpp"
 #include <iterator>
 #include <stdlib.h> //We need this to convert string to double
@@ -11,6 +10,10 @@
 Manager::Manager(){}
 Manager::Manager(std::string ID, std::string password) : ID(ID), password(password) {}
 
+
+void Manager::add_manager(Manager manager){
+	this->managers.push_back(manager);
+}
 
 void Manager::set_ID(std::string ID){
 	this->ID = ID;

@@ -1,5 +1,6 @@
 //#include "Maintenance.hpp"
 #include "Create_Customer.hpp"
+#include "Create_Manager.hpp"
 #include "Customer.hpp"
 #include "Account.hpp"
 #include "Manager.hpp"
@@ -65,6 +66,8 @@ void input(){
 */
 int main(){
 
+
+
 	std::string id;
 	std::cout << "------------------ATM------------------" << std::endl;
 	std::cout << "Insert your ID and password" << std::endl;
@@ -72,6 +75,9 @@ int main(){
 	std::cin >> id;
 	std::string id_input = id+".txt";
 	CC.create_customer(id_input);		
+
+
+
 } // main closing
 
 
