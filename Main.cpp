@@ -3,6 +3,7 @@
 #include "Customer.hpp"
 #include "Account.hpp"
 #include "Manager.hpp"
+#include "Open_Account.hpp"
 #include "Bank.hpp"
 #include <iterator>
 #include <stdlib.h> //We need this to convert string to double
@@ -63,6 +64,7 @@ void input(){
 
 */
 int main(){
+
 	std::string id;
 	std::cout << "------------------ATM------------------" << std::endl;
 	std::cout << "Insert your ID and password" << std::endl;

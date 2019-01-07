@@ -18,8 +18,6 @@ class Customer{
 	std::string password;
 
 	std::vector<Account> accounts;
-	
-
 
 public:
 	Customer(); //need it 

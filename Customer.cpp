@@ -24,7 +24,6 @@ void Customer::add_account(Account account){
 	this->accounts.push_back(account);
 }
 
-
 void Customer::set_name(std::string name){
 	this->name = name;
 }

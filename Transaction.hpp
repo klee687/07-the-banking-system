@@ -3,6 +3,7 @@
 
 #include "Customer.hpp"
 #include "Account.hpp"
+#include "Open_Account.hpp"
 
 class Transaction{
 	Account account;

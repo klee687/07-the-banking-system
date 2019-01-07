@@ -7,64 +7,26 @@
 #include <vector>
 #include <fstream>
 
-Manager::Manager() {}
+
+Manager::Manager(){}
+Manager::Manager(std::string ID, std::string password) : ID(ID), password(password) {}
 
 
-void Manager::open_acc(std::vector<std::string> temp_vector, Account account, std::string file_name){	
-	std::string c_deposit, s_deposit, manager_name;
-	int answr;
-
-
-	
-
-		std::cout << "Account Open" << std::endl;
-		std::cout << "[1] chequing account\n[2] saving account \n[3] both" << std::endl;
-		std::cin >> answr;
-		if (answr == 1){
-			if (account.get_account_name_C() == "chequing" ){
-				std::cout << "you already have a chequing account." << std::endl;
-			}
-			
-			else{
-				std::cout << "How much do you want to deposit in your Chequing account?" << std::endl;
-				std::cin >> c_deposit;
-				if (atof(c_deposit.c_str()) <= 0) {
-					std::cout << "it should be more than $0. Please try again!" << std::endl;
-					open_acc(temp_vector, account, file_name);
-				}
-				account.set_account_name_C("chequing");
-				account.set_chequing_balance(atof(c_deposit.c_str()));				
-				temp_vector.insert(temp_vector.begin() + 2, c_deposit);
-				temp_vector.insert(temp_vector.begin() + 5, "CS");
-				
-				std::ofstream output_file(file_name);
-				std::ostream_iterator<std::string> output_iterator(output_file, " ");
-				std::copy(temp_vector.begin(), temp_vector.end() -1, output_iterator);	
-			}
-
-		}else if (answr == 2){
-			if (account.get_account_name_S()=="saving"){
-				std::cout << "you already have a saving account." << std::endl;
-			}else{
-				std::cout << "How much do you want to deposit in youe Saving account?" << std::endl;
-				std::cin >> s_deposit;
-				if (atof(s_deposit.c_str()) <= 0) {
-					std::cout << "it should be more than $0. Please try again!" << std::endl;
-					open_acc(temp_vector, account, file_name);
-				}
-				account.set_saving_balance(atof(s_deposit.c_str()));
-				account.set_account_name_S("saving");
-				temp_vector.insert(temp_vector.begin() + 3, s_deposit);
-				temp_vector.insert(temp_vector.begin() + 5, "CS");	
-				std::ofstream output_file(file_name);
-				std::ostream_iterator<std::string> output_iterator(output_file, " ");
-				std::copy(temp_vector.begin(), temp_vector.end()-1, output_iterator);
-			}
-		}else if (answr ==3){
-			if (account.get_chequing_balance() != 0 || account.get_saving_balance() != 0){
-				std::cout << "Both" << std::endl;
-			}
-		}else{
-			std::cout << "wrong input" << std::endl; 
-		}
+void Manager::set_ID(std::string ID){
+	this->ID = ID;
 }
+
+
+std::string Manager::get_password(){
+	return password;
+}
+
+
+std::string Manager::get_ID(){
+	return ID;
+}
+
+void Manager::set_password(std::string password){
+	this -> password = password;
+}
+
