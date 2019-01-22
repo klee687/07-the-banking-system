@@ -12,41 +12,50 @@ void Move_Money::c_to_s(Account account, std::vector<std::string> temp_vector, s
 	Transaction t;
 	double cs;
 	std::ofstream output_file(file_name);
-	std::cout << "How much money do you want to move from Chequing to Saving?" << std::endl;
-	std::cin >> cs;
-	if (cs >= account.get_chequing_balance()){
-		std::cout << "Too much money to move. Try again" << std::endl;
-		c_to_s(account, temp_vector, file_name);
+
+	if(account.get_account_name_C() != "chequing" || account.get_account_name_S() != "saving"){
+		std::cout << "you dont have a chequing account. \n" << std::endl; 
+		t.transaction(account, temp_vector, file_name);
 	}
 
-	else{
-		if (account.get_account_name_C() != "chequing" || account.get_account_name_S() != "saving"){
-			std::cout << "you dont have either chequing or saving account. Too bad :/" << std::endl;
-			t.transaction(account, temp_vector, file_name);
+	else {
+
+		std::cout << "How much money do you want to move from Chequing to Saving?" << std::endl;
+		std::cin >> cs;
+		if (cs >= account.get_chequing_balance()){
+			std::cout << "Too much money to move. Try again" << std::endl;
+			c_to_s(account, temp_vector, file_name);
 		}
 
-		sub_move(account, temp_vector, file_name, cs, 1);
-	} //else
+		else{
+			sub_move(account, temp_vector, file_name, cs, 1);
+		} //else
+	}
 }
 
 void Move_Money::s_to_c(Account account, std::vector<std::string> temp_vector, std::string file_name){
 	Transaction t;
 	double cs;
-//	std::ofstream output_file(file_name);
-	std::cout << "How much money do you want to move from Saving to Chequing?" << std::endl;
-	std::cin >> cs;
-	if (cs >= account.get_saving_balance()){
-		std::cout << "Too much money to move. Try again" << std::endl;
-		s_to_c(account, temp_vector, file_name);
+
+
+	if(account.get_account_name_C() != "chequing" || account.get_account_name_S() != "saving"){
+		std::cout << "you dont have a chequing account. \n" << std::endl; 
+		t.transaction(account, temp_vector, file_name);
 	}
 
 	else{
-		if (account.get_account_name_C() != "chequing" || account.get_account_name_S() != "saving"){
-			std::cout << "you dont have either chequing or saving account. Too bad :/" << std::endl;
-			t.transaction(account, temp_vector, file_name);
+	
+		std::cout << "How much money do you want to move from Saving to Chequing?" << std::endl;
+		std::cin >> cs;
+		if (cs >= account.get_saving_balance()){
+			std::cout << "Too much money to move. Try again" << std::endl;
+			s_to_c(account, temp_vector, file_name);
 		}
-		sub_move(account, temp_vector, file_name, cs, 2);
-	} //else
+
+		else{
+			sub_move(account, temp_vector, file_name, cs, 2);
+		} //else
+	}
 }
 
 

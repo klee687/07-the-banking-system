@@ -16,15 +16,14 @@ void Transaction::transaction(Account account, std::vector<std::string> temp_vec
 	Open_Account open_account;
 	int a1;
 	std::ofstream output_file(file_name);
-label1:	std::cout << "\n[1] Deposit\n[2] Withdrawal\n[3] Move money from C -> S\n[4] Move money from S -> C\n[5] Open an account\n[6] Close an account\n[7] Exit" << std::endl;
+label1:	std::cout << "\n[1] Deposit\n[2] Withdrawal\n[3] Move money from C -> S\n[4] Move money from S -> C\n[5] Open an account\n[6] Exit" << std::endl;
 	std::cin >> a1;
 	if (a1 == 1) deposit(account, temp_vector, file_name);
 	else if (a1 == 2) withdrawal(account, temp_vector, file_name);
 	else if (a1 == 3) mm.c_to_s(account, temp_vector, file_name);
 	else if (a1 == 4) mm.s_to_c(account, temp_vector, file_name);
 	else if (a1 == 5) open_account.open_acc(temp_vector, account, file_name); 
-//	else if (a1 == 6) manager.close_acc(temp_vector, account, file_name);
-	if (a1 == 7) closing(temp_vector, file_name);
+	if (a1 == 6) closing(temp_vector, file_name);
 	return;
 }
 
@@ -43,11 +42,11 @@ void Transaction::deposit(Account account, std::vector<std::string> temp_vector,
 		}else{
 			std::cout << "How much do you want to deposit in your chequing account?		: " <<std::endl;
 			std::cin >> c_dep;
+			std::cout << account.get_chequing_balance() << std::endl;
 			account.set_chequing_balance(account.get_chequing_balance()+c_dep);
 			std::cout << "Your chequing balance is now $" << account.get_chequing_balance() << std::endl;
 			temp_vector[2] = std::to_string(account.get_chequing_balance());
-			std::ostream_iterator<std::string> output_iterator(output_file, " ");
-			std::copy(temp_vector.begin(), temp_vector.end(), output_iterator);				
+			closing(temp_vector, file_name);				
 		}
 /*a1*/	}else if (a2 == 2){
 		if (account.get_account_name_S() != "saving"){
@@ -58,15 +57,15 @@ void Transaction::deposit(Account account, std::vector<std::string> temp_vector,
 			std::cin >> s_dep;
 			account.set_saving_balance(account.get_saving_balance()+s_dep);
 			std::cout << "your saving balance is now $" << account.get_saving_balance() << std::endl;
-			if (temp_vector[3] == "S"){
+			if (temp_vector[4] == "S"){
 				temp_vector[2] = std::to_string(account.get_saving_balance());
-				std::ostream_iterator<std::string> output_iterator(output_file, " ");
-				std::copy(temp_vector.begin(), temp_vector.end(), output_iterator);
-			}else if (temp_vector[4] == "CS"){
+				closing(temp_vector, file_name);
+			}			
+
+			else if (temp_vector[5] == "CS"){
 				temp_vector[3] = std::to_string(account.get_saving_balance());
-				std::ostream_iterator<std::string> output_iterator(output_file, " ");
-				std::copy(temp_vector.begin(), temp_vector.end(), output_iterator);				
-			}	
+				closing(temp_vector, file_name);				
+			}
 		}
 	}
 	return;
@@ -159,10 +158,17 @@ void Transaction::sub_wit(Account account, std::vector<std::string> temp_vector,
 	if (i == 1){
 		account.set_chequing_balance(account.get_chequing_balance()-in);
 		std::cout << "Your chequing balance is now $" << account.get_chequing_balance() << std::endl;
-		temp_vector[2] = std::to_string(account.get_chequing_balance());
-		std::ostream_iterator<std::string> output_iterator(output_file, " ");
-		std::copy(temp_vector.begin(), temp_vector.end(), output_iterator);
+
+		if (temp_vector[3] == "C"){				
+			temp_vector[2] = std::to_string(account.get_chequing_balance());
+			closing(temp_vector, file_name);
+		}else if (temp_vector[5] == "CS"){
+			temp_vector[2] = std::to_string(account.get_chequing_balance());
+			std::ostream_iterator<std::string> output_iterator(output_file, " ");
+			std::copy(temp_vector.begin(), temp_vector.end(), output_iterator);
+		}
 	}
+	
 
 	else if (i == 2){
 		account.set_saving_balance(account.get_saving_balance()-in);
@@ -172,7 +178,7 @@ void Transaction::sub_wit(Account account, std::vector<std::string> temp_vector,
 			temp_vector[2] = std::to_string(account.get_saving_balance());
 			std::ostream_iterator<std::string> output_iterator(output_file, " ");
 			std::copy(temp_vector.begin(), temp_vector.end(), output_iterator);
-		}else if (temp_vector[4] == "CS"){
+		}else if (temp_vector[5] == "CS"){
 			temp_vector[3] = std::to_string(account.get_saving_balance());
 			std::ostream_iterator<std::string> output_iterator(output_file, " ");
 			std::copy(temp_vector.begin(), temp_vector.end(), output_iterator);

@@ -61,6 +61,7 @@ void Create_Customer::create_customer(std::string file_name){
 	}
 	
 	password(customer, file_name, temp_vector);
+	bank.summary(customer, account);
 	money.transaction(account, temp_vector, file_name);
 	
 }
